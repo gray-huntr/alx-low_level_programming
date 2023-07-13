@@ -1,7 +1,7 @@
 #include<unistd.h>
 /**
  * main - entry point
- * Print the specified string using write
+ * Description: Print the specified string using write
  * return 1
  */
 int main(void)
