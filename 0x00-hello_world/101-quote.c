@@ -2,7 +2,7 @@
 /**
  * main - entry point
  * Description: Print the specified string using write
- * return: 1
+ * Return: 1
  */
 int main(void)
 {
