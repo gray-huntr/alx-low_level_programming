@@ -9,9 +9,10 @@ int main(void)
 	char ltr;
 
 	ltr = 'a';
-	do{
+	do {
 		putchar(ltr);
-		putchar('\n');
+		ltr++;
 	} while (ltr <= 'z');
+	putchar('\n');
 	return (0);
 }
