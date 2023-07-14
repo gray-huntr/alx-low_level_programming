@@ -13,7 +13,7 @@ int main(void)
 	x = 'a';
 	while (y < 10)
 	{
-		putchar(y);
+		putchar('0' + y);
 		y++;
 	}
 	while (x < 'g')
