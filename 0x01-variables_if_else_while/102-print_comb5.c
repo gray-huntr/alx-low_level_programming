@@ -21,7 +21,7 @@ int main(void)
 			putchar('0' + dig2 % 10);
 			if (dig1 != 98 || dig2 != 99)
 			{
-				putchar('.');
+				putchar(',');
 				putchar(' ');
 			}
 			dig2++;
