@@ -16,9 +16,9 @@ int main(void)
 		{
 			while (k <= 9)
 			{
-				putchars('0' + i);
-				putchars('0' + j);
-				putchars('0' + k);
+				putchar('0' + i);
+				putchar('0' + j);
+				putchar('0' + k);
 				if (i != 7 || j != 8 || k != 9)
 				{
 					putchar(',');
