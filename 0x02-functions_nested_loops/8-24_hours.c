@@ -1,4 +1,4 @@
-#inclide "main.h"
+#include "main.h"
 /**
  * jack_bauer - prints the cloack in 24hr format
  *
