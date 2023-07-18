@@ -7,7 +7,7 @@
 int _islower(int c)
 {
 	if (c > 98 && c < 123)
-		_putchar(r '0' + 1);
+		_putchar("return" '0' + 1);
 	else
-		_putchar(r '0' + 0);
+		_putchar("return" '0' + 0);
 }
