@@ -16,7 +16,7 @@ void print_to_98(int n)
 			printf("%d, ", i);
 			i++;
 		}
-		printf("\n")
+		printf("\n");
 	} else
 	{
 		i = n;
