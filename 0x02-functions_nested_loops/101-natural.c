@@ -1,23 +1,21 @@
 #include <stdio.h>
 #include "main.h"
 /**
- * main - entry point
- *
+ * main - print the sum of
+ * numbers divisible 3 and 5 below 1024
  * Return: 0
  */
 int main(void)
 {
-	int x = 0;
+	int ul = 0;
+	int sum = 0;
 
-	while (x < 1024)
+	while (start < 1024)
 	{
-		if ((x % 3 == 0) || (x % 5 == 0))
-		{
-			x = x + x;
-			x++;
-		}
+		if (start % 3 == 0 || start % 5 == 0)
+			sum += start;
+		start++;
 	}
-	printf("%d\n", x);
+	printf("%d\n", sum);
 	return (0);
-
 }
