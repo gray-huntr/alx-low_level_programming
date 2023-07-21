@@ -1,12 +1,13 @@
 #include "main.h"
+
 /**
- * print_number - prints integers
- * @n: parameter
- * Return: void
+ * print_number - prints an integer.
+ * @n: input integer.
+ * Return: no return.
  */
 void print_number(int n)
 {
-	unsigned int a;
+	unsigned int count;
 
 	if (n < 0)
 	{
@@ -14,15 +15,15 @@ void print_number(int n)
 		n = -n;
 	}
 
-	a = 1;
+	count = 1;
 
-	while (n / a > 9)
-		a *= 10;
+	while (n / count > 9)
+		count *= 10;
 
-	while (a >= 1)
+	while (count >= 1)
 	{
-		_putchar((n / a) + '0');
-		n %= a;
-		a /= 10;
+		_putchar((n / count) + '0');
+		n %= count;
+		count /= 10;
 	}
 }
