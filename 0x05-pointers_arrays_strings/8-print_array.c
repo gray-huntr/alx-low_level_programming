@@ -10,7 +10,7 @@ void print_array(int *a, int n)
 {
 	int length = 0, end = n - 1;
 
-	while (length < end)
+	while (length < end && length != 0)
 	{
 		printf("%d, ", a[length]);
 		length++;
