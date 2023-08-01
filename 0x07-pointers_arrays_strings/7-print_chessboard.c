@@ -5,16 +5,12 @@
  */
 void print_chessboard(char (*a)[8])
 {
-	int i = 0, j = 0;
+	int l, w;
 
-	while (i < 8)
+	for (l = 0; l < 8; l++)
 	{
-		while (j < 8)
-		{
-			_putchar(a[i][j]);
-			j++;
-		}
+		for (w = 0; w < 8; w++)
+			_putchar(a[l][w]);
 		_putchar('\n');
-		i++;
 	}
 }
