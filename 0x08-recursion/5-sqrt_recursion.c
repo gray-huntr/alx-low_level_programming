@@ -13,7 +13,7 @@ int _sqrt_recursion(int n)
 /**
  * square_finder - find the square by guessing
  * @n: the square
- * @guess: the number to count up till square is gotten
+ * @i: the number to count up till square is gotten
  * Return: guess
  */
 int square_finder(int n, int i)
