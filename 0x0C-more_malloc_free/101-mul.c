@@ -1,89 +1,101 @@
 #include "main.h"
-#include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
+#include <stdio.h>
+
+#define ERR_MSG "Error"
 
 /**
- * multiply - Multiplies two strings representing non-negative integers.
- * @num1: The first number.
- * @num2: The second number.
+ * is_digit - checks if a string contains a non-digit char
+ * @s: string to be evaluated
  *
- * Return: A string representing the product of num1 and num2.
+ * Return: 0 if a non-digit is found, 1 otherwise
  */
-char *multiply(const char *num1, const char *num2)
+int is_digit(char *s)
 {
-	int len1 = strlen(num1), len2 = strlen(num2), len = len1 + len2;
-	int *result = calloc(len, sizeof(int));
-	int i, j, digit1, digit2, product, sum, index = 0, start = 0;
-	char *cProduct;
+	int i = 0;
 
-	if (result == NULL)
-		return (NULL);
-	for (i = len1 - 1; i >= 0; i--)
+	while (s[i])
 	{
-		for (j = len2 - 1; j >= 0; j--)
-		{
-			digit1 = num1[i] - '0';
-			digit2 = num2[j] - '0';
-			product = digit1 * digit2;
-			sum = result[i + j + 1] + product;
-			result[i + j] += sum / 10;
-			result[i + j + 1] = sum % 10;
-		}
+		if (s[i] < '0' || s[i] > '9')
+			return (0);
+		i++;
 	}
-	cProduct = malloc((len + 1) * sizeof(char));
-	if (cProduct == NULL)
-	{
-		free(result);
-		return (NULL);
-	}
-
-	while (start < len && result[start] == 0)
-		start++;
-	while (start < len)
-		cProduct[index++] = result[start++] + '0';
-
-	cProduct[index] = '\0';
-	free(result);
-	if (index == 0)
-	{
-		cProduct[0] = '0';
-		cProduct[1] = '\0';
-	}
-	return (cProduct);
+	return (1);
 }
 
 /**
- * main - Entry point
- * @argc: The argument count
- * @argv: The argument vector
- * Return: Always 0
+ * _strlen - returns the length of a string
+ * @s: string to evaluate
+ *
+ * Return: the length of the string
+ */
+int _strlen(char *s)
+{
+	int i = 0;
+
+	while (s[i] != '\0')
+	{
+		i++;
+	}
+	return (i);
+}
+
+/**
+ * errors - handles errors for main
+ */
+void errors(void)
+{
+	printf("Error\n");
+	exit(98);
+}
+
+/**
+ * main - multiplies two positive numbers
+ * @argc: number of arguments
+ * @argv: array of arguments
+ *
+ * Return: always 0 (Success)
  */
 int main(int argc, char *argv[])
 {
-	const char *num1, *num2;
-	char *product;
+	char *s1, *s2;
+	int len1, len2, len, i, carry, digit1, digit2, *result, a = 0;
 
-	if (argc != 3)
+	s1 = argv[1], s2 = argv[2];
+	if (argc != 3 || !is_digit(s1) || !is_digit(s2))
+		errors();
+	len1 = _strlen(s1);
+	len2 = _strlen(s2);
+	len = len1 + len2 + 1;
+	result = malloc(sizeof(int) * len);
+	if (!result)
+		return (1);
+	for (i = 0; i <= len1 + len2; i++)
+		result[i] = 0;
+	for (len1 = len1 - 1; len1 >= 0; len1--)
 	{
-		printf("Error\n");
-		exit(98);
+		digit1 = s1[len1] - '0';
+		carry = 0;
+		for (len2 = _strlen(s2) - 1; len2 >= 0; len2--)
+		{
+			digit2 = s2[len2] - '0';
+			carry += result[len1 + len2 + 1] + (digit1 * digit2);
+			result[len1 + len2 + 1] = carry % 10;
+			carry /= 10;
+		}
+		if (carry > 0)
+			result[len1 + len2 + 1] += carry;
 	}
-
-	num1 = argv[1];
-	num2 = argv[2];
-
-	product = multiply(num1, num2);
-
-	if (product == NULL)
+	for (i = 0; i < len - 1; i++)
 	{
-		printf("Error\n");
-		exit(98);
+		if (result[i])
+			a = 1;
+		if (a)
+			_putchar(result[i] + '0');
 	}
-
-	printf("%s\n", product);
-
-	free(product);
-
+	if (!a)
+		_putchar('0');
+	_putchar('\n');
+	free(result);
 	return (0);
 }
